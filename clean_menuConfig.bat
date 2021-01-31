@@ -1,0 +1,11 @@
+del render.o
+del system.o
+del psp/config.o
+del psp/controls.o
+del psp/gameboy_render.o
+del psp/main.o
+del psp/menuplus.o
+del psp/pspsound.o
+del psp/sms.o
+del psp/sound.o
+del psp/videogu.o

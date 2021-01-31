@@ -1,0 +1,3 @@
+In order to compile it, you need a working setup of PSPSDK and OSlib (OldSchool Library for PSP). On the command line, please type:
+
+make -f Makefile.psp

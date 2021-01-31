@@ -1,0 +1,197 @@
+***********
+* MMSPlus *
+***********
+
+
+Introduction
+------------
+
+MMSPlus is a Sega Master System and Game Gear emulator. It's a port from SMSPlus, with improved compatibility, good speed, no more glitchy sound, and a nice interface with lots of options.
+
+* Programming:    Florian Brönnimann (Brunni)
+* Backgrounds:    Japi
+* Icons:          Steeven Flores (Phoebius)
+
+
+Usage
+-----
+
+Put the folders MMSPlus and MMSPlus% in the PSP/GAME directory of your Memory Stick or install it like every other PSP app.
+Then put your ROMs somewhere on your Memory Stick. You should regroup them in one folder, so that it's easier to find and play them.
+Start MMSPlus. It will display a menu where "Load ROM" is the first selected option. Select it with the cross (X) button.
+You can bring up the audio pop-up, displaying the current track with select. Then, press select to disable it or R to switch to next track.
+
+Load ROM
+--------
+
+You will be brought to a list of the folders located in your ms0:/PSP/GAME directory. You can go to the parent folder by pressing the triangle button, or select a folder with up/down and cross.
+When ROMs (*.gg, *.sms, *.zip) are available, they're displayed just after the folders. Press cross (X) to select one, the game will be loaded and started automatically.
+
+
+Accessing the menu
+------------------
+
+Once the game is started, you can still access the main menu by pressing 'L' (this key can be remapped, btw). You can see a serie of colored buttons, indicating "File", "Video", "Sound", "Ctrl" (control) and "Misc" (miscenalleous). You can browse them by pressing left or right, or using the analog stick.
+Here as well, move the cursor with up/down, select with cross and return to the previous sub-menu (or cancel) with circle. You can restore the default value for any option by pressing the square button.
+Note: as most of the options are self-explanatory, I won't cover them here.
+
+
+Save states
+-----------
+
+MMSPlus supports several states for each games. 10 of them are MMSPlus slots, one is the standard slot (can be imported from SMSPlus) and one is the RAM slot.
+The RAM slot is only temporary, it's never written to the memory stick, and it will be erased once you turn your PSP off. Saving/loading from it is very fast and won't reduce your memstick lifetime.
+Save state previews take time to display, that's voluntary. Instead of storing an image in the save state itself, MMSPlus uses the save data to generate an image in real time, which costs no memory but is a bit longer, so I wait a little less than 1 second before beginning to load.
+
+
+SRAM support
+------------
+
+By default, SRAM is not automatically saved to the memory stick. You can enable it by setting "Autosave SRAM" to "On" in the File > SRAM sub-menu. It will be then saved when the game is exited. To save SRAM instantly, select the "Save SRAM" option.
+
+
+Video options
+-------------
+
+There are three sub-menus.
+
+
+Video > Render
+--------------
+
+Here, you can set some options regarding the render itself.
+
+- Scaling: Sets the screen scale. 1x is the standard size - quite small. If you want better sharpness in this mode, disable smoothing. Fit means scaled so that it fits the screen, but without changing the aspect ratio, so you'll see black borders. Wide is between "Fit" and "Fullscreen". It's usually the best as it's not crushed but still wide.
+
+- Smoothing: softens the render when scaled. Less sharp but you won't notice the pixellisation effect.
+
+- Depth: 8 bits mode is fast, but doesn't allow for some effects, like gradients in the sky, especially used on the game gear, like in sonic blast for example (try the special stage in 8 bits and then in 16 bits mode). However, 16 bits mode is really slow, and will usually require that you set the PSP clock to 250 MHz for SMS and 200 MHz for GG.
+
+- Brightness: there are three brightness modes:
+  * Normal is the default mode (nothing changes)
+  * Bright & Fast is a special mode which is designed to reduce the LCD response time and be played in sun light. It brightens the render and reduces the contrast. LCD response time is then really low, especially with dark tones.
+  * Gamma permits to set the LCD brightness when your are playing in sun light. Gamma is set with the option below, which is disabled when brightness mode is not gamma.
+
+
+Video > Synchronization
+-----------------------
+
+These are options about screen synchronisation (VSync, frameskip, etc.)
+
+*** Frameskip ***
+Frameskip is designed to prevent slowdowns by reducing framerate when lagging.
+In MMSPlus, it is different from most existing emulators, you only have two values: frameskip and frameskip max. The actual frameskip value will always be between these two values.
+* If you want auto mode, set frameskip to 0 and max frameskip to the maximum value you want.
+* If you want fixed mode, set frameskip to any non-zero value (like 2). Set Max frameskip to an higher value (MMSPlus does this automatically)
+* If you want no frameskip mode, set both frameskip and max frameskip to 0. The game will slowdown if it can't keep up a constant framerate.
+
+
+*** Vsync ***
+Vsync is also different from other emulators. There is no "no vsync" option. The auto (async) mode will enable Vsync only if the game is not lagging. The "On" mode will always enable it, giving you framerates like 60, 30, 20 and so on, always divisor of the actual standard framerate. The auto (sync) mode will not wait VSync, but try to not cut through the screen. You'll get lower framerates than async mode, though.
+
+- Turbo skip: set the number of frames that will be skipped for one rendered frame in turbo mode. The greater it is, the faster the game will run, but the less smooth it will be.
+
+Video > Misc
+------------
+
+- Country: Set NTSC for US / JAP, PAL for EUR.
+- Show framerate:
+* Set to CPU usage to see the CPU used time per frame. If it indicates 50% for example, that means only 50% CPU is used per frame, so you can reduce the CPU frequency to earn some battery time. If it indicates 120% for example, then that's too much and can reduce the speed/smoothness of your game.
+* Set to Framerate to display the actual framerate (frames per second) and speed of your game. It'll look like this: 38 fps (100%).
+
+
+Sound
+-----
+
+You can set some sound properties here.
+- Enabled: master enable or disable the sound emulation. It runs faster when disabled.
+- Sample rate: set to 44 kHz for the best sound quality. Set to 22 or 11 kHz for a performance improvement.
+- Output mode: let Stereo (2 channels)
+- Volume boost: allows to boost the output volume, which is quite weak by default. Remember that it's a volume boost, not reduction, so setting it to high (especially the +3 level) can make distortion. It is done by software so it can be slightly slower, but it's not really noticeable.
+
+Note: MMSPlus doesn't support YM2413 (FM) chip emulation, found in some Mark 3 and japanese Master System models.
+
+
+Controls
+--------
+
+This menu allows you to tweak the PSP keys. The redefine menu allows to set game keys and the shortcuts the access keys, like turbo mode, reset, state save, etc.
+In redefine & shortcuts mode, you'll get a list of keys. Move the cursor to the one you'd like to change and press cross. Then a dialog will be opened, asking you to press the new assigned key.
+Note: press square to restore the default value of a key.
+
+Important: if you press multiple keys, for example say cross + square, they'll all be taken in account. For game keys, you'll have to press EITHER cross or square to activate the control, for shortcuts, you'll have to press ALL of them (cross and square at the same time) to activate it.
+
+
+Controls > Analog configuration
+-------------------------------
+
+This sub-menu allows you to tweak the analog joystick.
+* Enable Analog to D-Pad to use it like the direction keys.
+* Set stick treshold, the smaller it is, the finer it'll be. With a big value, like 100, you'll have to move the stick much more to activate a direction.
+* Do a calibration for a better stick precision. Follow the on-screen instructions. If the calibration was successful, you should be able to set the stick treshold to something like 10 or even less.
+* Set enable calibration to Off if you don't want to use the calibration parameters.
+
+Note: If you set a too low treshold, the stick might be seem completely blocked, making the menu turn and turn forever. In this case, wait about 20 seconds without touching the stick, and a message will indicate you that the stick has automatically been disabled. You can reenable it by setting "Analog to D-Pad" to On.
+
+
+Miscenalleous
+-------------
+
+These options are there because I didn't know where to put them :p
+- PSP CPU clock: set the CPU clock to any value you want between 100 and 333 MHz. Some preset values are proposed in the menu, select Other to fine-customize the frequency. None of the frequencies are dangerous for your PSP, but I'm not responsible for any damage that could happen.
+   * 222 MHz is a good compromise, it offers very good performance and good autonomy.
+   * 333 MHz reduces the autonomy but runs very fast.
+   * Usually, 166 MHz is enough for most games to run at 60 fps, except some SMS games like the Sonic series. The battery life improvement is not very big over 222 MHz however.
+   * Do not use a frequency that might reduce your gaming experience. The consumption difference below 222 MHz is very small and not worth a loss of framerate IMHO.
+
+
+Misc > SMS hard tweaking
+------------------------
+
+This menu was designed for setting very complex things about the SMS hardware, but there are not so much left finally :D
+Still, you can set the Z80 clock, which is the main processor (and thus affects both SMS and GG). Setting to a high value will make the game run better, but requires more PSP power.
+
+Note: modifying the frequency value has an influence on digital sound, like voices or the SEGA logo, but the game runs without any problem. Setting a value lower than 100% will slowdown the game and can give unpredictable results, which can be quite ugly, like in Outrun.
+
+1) Some games like Sonic Chaos are very little playable at default CPU frequency, they slow down all the time. Set it to 130% or 150% and enjoy playing to it ;)
+2) Also try it on some games that were crashing before, like the smurfs. You'll have to set it to 200% to play the Dam bonus stage, or 150% to play the swamp stage, else you'll get a black screen.
+
+
+Misc > User Interface
+---------------------
+
+Set options regarding the user interface.
+- Background: set the background mode.
+   * Background displays the standard background
+   * In-game mode displays the in-game screen as the menu background. When no game is loaded, it displays the standard background. It'll also display a closing animation when you return to the game, allowing you to prepare to continue the game directly. Especially useful if you are in a complex action, like a car game, and you need to have some buttons always pressed.
+
+- Reload defaults: allows you to restore default settings:
+   * Your default config: config stored in the default.ini configuration file
+   * System default config: MMSPlus built-in default configuration
+   * This game config: default config saved for the running game
+
+- Script plugins: allows you to create skins or special things (I don't personnaly know what :p)
+
+
+Music player
+------------
+
+The music player can play GYM files (used for genesis and master system). They require a lot of power to be emulated, something like 180 MHz if played alone. With the menu running in parallel, It requires 200 MHz, else it may slow down. Set to default (222 MHz) to be comfortable when listening to music. Or reduce the sample rate. Sample rate has direct effect on performances, that is, 22 kHz will be something like 2 times faster than 44 kHz, allowing lower CPU frequencies like 133 MHz.
+Musics have to be placed in a zip file, which is used as a playlist. You can select the playing mode (repeat, shuffle, etc.) from the music player menu.
+
+
+Scripting...
+------------
+
+Welcome to a really unuseful functionnality of MMSPlus. It allows you to create a custom script file (named plugins.ini) which contains some script. You can for example skin the emulator by changing the images, or the selection rectangle color.
+
+1) Labels: labels are followed with a ':'. Exported labels (which appears as entry points in the plugin list) are preceded with a '_'.
+2) Commands: each command usually references an object, like 'menu'. Sub-objects are referenced by a '.'.
+3) End: call it to end the current script, obligatory.
+
+Look at the built-in plugins.ini file, that allows you to choose a second skin for an example of what you can do with it. The other generated .ini files use the same engine, you can set these elements from any script.
+
+
+
+
+
